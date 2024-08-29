@@ -1,5 +1,3 @@
-Here’s a handy CSS cheat sheet for styling elements, including buttons:
-
 ### CSS Cheat Sheet
 
 #### **Colors**
