@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI Calculator</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container {
+                width: 100%;
+                max-width: 600px;
+                border-collapse: collapse;
+            }
+            .container td, .container th {
+                padding: 10px;
+                text-align: left;
+            }
+            .render {
+                background-color: yellow;
+            }
+            table {
+                width: 100%;
+                text-align: center;
+            }
+            table th {
+                border: 1px solid black;
+                background-color: lightblue;
+            }
+            table td {
+                border-collapse: collapse;
+                border: 1px solid black;
+            }
+            #form {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <table class="container">
+            <tr>
+                <td id="form">
+                    <form action="#">
+                        <label>BMI Calculator</label>
+                        <br><br>
+                        <label for="name">Name-surname</label> 
+                        <input id="name" type="text">
+                        <br><br>
+                        <label>Gender</label>
+                        <input id="male" type="radio">
+                        <label for="male">male</label>
+                        <input id="female" type="radio">
+                        <label for="female">female</label>
+                        <br><br>
+                        <label for="weight">Weight</label>
+                        <input id="weight" type="text"> kg 
+                        <br><br>
+                        <label for="height">Height</label>
+                        <input id="height" type="text"> m 
+                        <br><br>
+                        <input id="compute" type="button" value="Calculate">
+                        <br><br>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="tableDiv"></div>
+                </td>
+            </tr>
+        </table>
+        <script>
+            function calculateBMI() {
+                var weight = parseFloat(document.getElementById("weight").value);
+                var height = parseFloat(document.getElementById("height").value);
+                return weight / (height ** 2);
+            }
+
+            function interpret() {
+                var bmi = calculateBMI();
+                if (bmi < 18.5) {
+                    return "underweight";
+                } else if (bmi >= 18.5 && bmi < 24.9) {
+                    return "normal";
+                } else if (bmi >= 24.9 && bmi < 29.9) {
+                    return "overweight";
+                } else {
+                    return "obese";
+                }
+            }
+
+            function tableRender() {
+                var result = interpret();
+                var tableDiv = document.getElementById("tableDiv");
+                tableDiv.innerHTML = "<table>" +
+                    "<tr><th>BMI</th><th>Interpretation</th></tr>" +
+                    "<tr class='" + (result === "underweight" ? "render" : "") + "'><td>Below 18.5</td><td>Underweight</td></tr>" +
+                    "<tr class='" + (result === "normal" ? "render" : "") + "'><td>18.5 - 24.9</td><td>Normal</td></tr>" +
+                    "<tr class='" + (result === "overweight" ? "render" : "") + "'><td>24.9 - 29.9</td><td>Overweight</td></tr>" +
+                    "<tr class='" + (result === "obese" ? "render" : "") + "'><td>Above 29.9</td><td>Obese</td></tr>" +
+                    "</table>";
+            }
+
+            // window.addEventListener("load", function() {
+            //     var button = document.getElementById("compute");
+            //     button.addEventListener("click", tableRender);
+            // });
+
+                var button = document.getElementById("compute");
+                button.addEventListener("click", tableRender);
+        </script>
+    </body>
+</html>

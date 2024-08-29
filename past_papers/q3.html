@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrow</title>
+    </head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table td {
+            border: 1px solid black;
+            text-align: center;
+            width: 50px;
+        }
+        button {
+            background-color: lightblue;
+        }
+    </style>
+    <body>
+        <table>
+            <tr>
+                <td><button id="left"><img src="../assets/leftArrow.png" alt="down arrow" width="20px" height="auto"></button></td> 
+                <td rowspan="2" style="width: 150px;"><img id="counter" src="../assets/1.png" width="50px" height="auto"></td> 
+                <td><button id="right"><img src="../assets/right.png" alt="up arrow" width="20px" height="auto"></button></td> 
+            </tr>
+
+            <tr>
+                <td>down</td>
+                <td>up</td>
+            </tr>
+        </table>
+        <script>
+            var left = document.getElementById("left");
+            var right = document.getElementById("right");
+            var counter = document.getElementById("counter");
+            var count = 1;
+            
+            function decrease() {
+                if(count > 1) {
+                    count--;
+                } 
+                counter.setAttribute("src", `../assets/${count}.png`);
+            }
+    
+            function increase() {
+                if(count < 9) {
+                    count++;
+                }
+                counter.setAttribute("src", `../assets/${count}.png`);
+            }
+    
+            left.addEventListener("click", decrease);
+            right.addEventListener("click", increase);
+        </script>
+    </body>
+</html>
