@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    {% if user %}
+        <h3>You are logged in as {{ user }}</h3>
+    {% else %}
+        <h3>You are not logged in.</h3>
+    {% endif %}
+    <hr>
+    <form action="/setcookie" method="POST">
+        <h3>User ID</h3>
+        <p><input type="text" name="user" required></p>
+        <h3>Password</h3>
+        <p><input type="password" name="pwd" required></p>
+        <h3><input type="submit" name="submit"></h3>
+    </form>
+</body>
+</html>

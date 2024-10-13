@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <style>
+            ul.a {
+                list-style-type: square;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="a">
+            {% for lang in languages %}
+            <li>{{ lang }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

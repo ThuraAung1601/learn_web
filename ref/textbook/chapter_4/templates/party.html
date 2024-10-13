@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <style>
+            h2.a {
+                color: green;
+            }
+            h2.b {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Party Guest Or Not</h1>
+        <p>{{data.get('guest_name')}} is </p>
+        {% if data.get('guest_age') < 18 %}  
+        <h2 class="a">Not Allowed</h2>
+        {% else %}
+        <h2 class="b">Allowed</h2>
+        {% endif %}
+    </body>
+</html>
