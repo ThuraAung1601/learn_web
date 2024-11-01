@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Note App - Post a Note</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 300px; margin: auto; }
+        textarea, input[type="text"] { width: 100%; }
+        .note { border: 1px solid #000; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Note App</h1>
+        <h3>Post a Note:</h3>
+        <a href="/">Back</a>
+        <form action="/notes/new" method="post">
+            <div class="note">
+                <input type="text" name="title" placeholder="Title" required><br><br>
+                <textarea name="content" placeholder="Content" rows="4" required></textarea><br><br>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
