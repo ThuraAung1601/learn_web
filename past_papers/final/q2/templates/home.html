@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyNote App - All Notes</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 300px; margin: auto; }
+        .notes { border-collapse: collapse; width: 100%; }
+        .notes td { border: 1px solid #000; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MyNote App</h1>
+        <h3>All Notes:</h3>
+        <a href="/notes/new">Add a new note</a>
+        <table class="notes">
+            {% for note_id, note in enumerate(notes) %}
+                <tr><td><a href="/notes/{{ note_id }}">{{ note.title }}</a></td></tr>
+            {% else %}
+                <tr><td>No notes available.</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
