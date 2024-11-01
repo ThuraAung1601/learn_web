@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telephone Dial Panel</title>
+<style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; margin-top: 50px; }
+    #dialPanel { width: 200px; text-align: center; }
+    #display { font-size: 1.2em; height: 50px; background-color: #eee; padding: 10px; margin-bottom: 10px; }
+    .row { display: flex; }
+    button { flex: 1; padding: 15px; font-size: 1.2em; margin: 2px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div id="dialPanel">
+    <div id="display">Please dial a tel. no.</div>
+    <div class="row">
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <button id="btn3">3</button>
+    </div>
+    <div class="row">
+        <button id="btn4">4</button>
+        <button id="btn5">5</button>
+        <button id="btn6">6</button>
+    </div>
+    <div class="row">
+        <button id="btn7">7</button>
+        <button id="btn8">8</button>
+        <button id="btn9">9</button>
+    </div>
+    <div class="row">
+        <button id="btnDel">&lt;Del</button>
+        <button id="btn0">0</button>
+        <button id="btnCall">Call</button>
+    </div>
+</div>
+
+<script>
+    let dialedNumber = '';
+    let isCalling = false;
+
+    function updateDisplay(message) {
+        document.getElementById('display').innerHTML = message;
+    }
+
+    function dial(number) {
+        if (isCalling) return; // Prevent dialing during a call
+        if (dialedNumber.length >= 10) {
+            updateDisplay(dialedNumber + " Err!");
+            return;
+        }
+        dialedNumber += number;
+        updateDisplay(dialedNumber);
+    }
+
+    function deleteLast() {
+        if (isCalling) return; // Prevent deleting during a call
+        if (dialedNumber.length > 0) {
+            dialedNumber = dialedNumber.slice(0, -1);
+            updateDisplay(dialedNumber || "Please dial a tel. no.");
+        }
+    }
+
+    function makeCall() {
+        if (isCalling) {
+            dialedNumber = '';
+            isCalling = false;
+            updateDisplay("Please dial a tel. no.");
+            return;
+        }
+        if (dialedNumber.length === 10) {
+            updateDisplay(dialedNumber + " Calling...");
+            isCalling = true;
+        } else {
+            updateDisplay(dialedNumber + " Err! Dial exactly 10 numbers.");
+        }
+    }
+
+    // Add event listeners after the DOM content has loaded
+    window.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("btn1").addEventListener("click", () => dial(1));
+        document.getElementById("btn2").addEventListener("click", () => dial(2));
+        document.getElementById("btn3").addEventListener("click", () => dial(3));
+        document.getElementById("btn4").addEventListener("click", () => dial(4));
+        document.getElementById("btn5").addEventListener("click", () => dial(5));
+        document.getElementById("btn6").addEventListener("click", () => dial(6));
+        document.getElementById("btn7").addEventListener("click", () => dial(7));
+        document.getElementById("btn8").addEventListener("click", () => dial(8));
+        document.getElementById("btn9").addEventListener("click", () => dial(9));
+        document.getElementById("btn0").addEventListener("click", () => dial(0));
+        document.getElementById("btnDel").addEventListener("click", deleteLast);
+        document.getElementById("btnCall").addEventListener("click", makeCall);
+    });
+</script>
+
+</body>
+</html>
