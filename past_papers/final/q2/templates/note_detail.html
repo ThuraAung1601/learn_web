@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Note App - View Note</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 300px; margin: auto; }
+        .note { border: 1px solid #000; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Note App</h1>
+        <h3>View a note:</h3>
+        <a href="/">Back</a>
+        <div class="note">
+            <strong>{{ note.title }}</strong>
+            <p>{{ note.content }}</p>
+        </div>
+    </div>
+</body>
+</html>
